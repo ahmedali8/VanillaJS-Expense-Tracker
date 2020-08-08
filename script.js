@@ -15,6 +15,7 @@ const dummyTransactions = [
 
 let transactions = dummyTransactions;
 
+
 // Add transactions to DOM List
 function addTransactionDOM(transaction) {
     // Get sign 
@@ -34,10 +35,40 @@ function addTransactionDOM(transaction) {
     list.appendChild(item);
 }
 
+
+// Update the balance, income and expense (reduce() for summing)
+function updateValues() {
+    const amounts = transactions.map(transaction => transaction.amount);
+
+    const total = amounts
+        .reduce((acc, item) => (acc += item), 0)
+        .toFixed(2)
+    ;
+
+    const income = amounts
+        .filter(item => item > 0)
+        .reduce((acc, item) => (acc += item), 0)
+        .toFixed(2)
+    ;
+
+    const expense = (amounts
+        .filter(item => item < 0)
+        .reduce((acc, item) => (acc += item), 0)
+        * -1
+    ).toFixed(2);
+
+
+    balance.innerText = `$${total}`;
+    money_plus.innerText = `$${income}`;
+    money_minus.innerText = `$${expense}`;
+}
+
+
 // init app (forEach() is taking out individual transaction from transactions and adding it to the list item to the DOM)
 function init() {
     list.innerHTML = '';
     transactions.forEach(addTransactionDOM);
+    updateValues();
 }
 
 init();
