@@ -32,4 +32,4 @@ jobs:
     
     # Runs Surge command
     - name: Run surge
-      run: surge ./ vanillajs-expense-tracker-ahmed.surge.sh --token ${{secrets.SURGE.TOKEN}}
+      run: surge ./ vanillajs-expense-tracker-ahmed.surge.sh --token ${{secrets.SURGE_TOKEN}}
