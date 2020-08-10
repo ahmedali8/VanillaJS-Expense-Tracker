@@ -23,8 +23,12 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 function addTransaction(e) {
     e.preventDefault();
 
-    if (text.value.trim() === '' || amount.value.trim() === '') {
-        alert('Add any text and amount');
+    if (text.value.trim() === '') {
+        alert('Add valid text');
+
+    } else if (+amount.value.trim() === 0) {
+        alert('Add valid amount');
+
     } else {
         const transaction = {
             id: generateID(),
@@ -103,6 +107,15 @@ function removeTransaction(id) {
     transactions = transactions.filter(transaction => transaction.id !== id);
 
     updateLocalStorage()
+
+    init();
+}
+
+// Clear All Transactions
+function clearTransactions() {
+    transactions = [];
+
+    updateLocalStorage();
 
     init();
 }
