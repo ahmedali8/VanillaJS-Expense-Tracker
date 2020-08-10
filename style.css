@@ -33,7 +33,7 @@ body {
 }
 
 .box-ui {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)) ,url(./bg-image.jpg);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)) ,url(./images/bg-image.jpg);
     background-size: contain;
     width: 350px;
     height: auto;
